@@ -1,13 +1,20 @@
 ---
 title: "Reproducible Research Assignment 1"
 author: "Robert Ben Parkinson"
-date: "24 Febraury 2016"
-output: html_document
+date: "24-Feb-16"
+output: 
+  html_document: 
+    keep_md: yes
 ---
 1: Code for reading Activity Monitor Data
 
 ```{r}
-step <-   read.csv("data/activity.csv", sep =",")
+temp <- tempfile()
+download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip",temp)
+con <- unz(temp, "activity.csv")
+step <- read.csv(con, sep =",")
+unlink(temp)
+
 
 library(dplyr)
 
@@ -154,7 +161,11 @@ plot(df.weekday$s.Interval, df.weekday$s.Total  , type="l", col="green",
 9: All Code used for this Assignement.
 
 ```{r, echo=TRUE}
-step <-   read.csv("data/activity.csv", sep =",")
+temp <- tempfile()
+download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip",temp)
+con <- unz(temp, "activity.csv")
+step <- read.csv(con, sep =",")
+unlink(temp)
 
 library(dplyr)
 
@@ -253,4 +264,5 @@ plot(df.weekday$s.Interval, df.weekday$s.Total  , type="l", col="green",
 
 ```
 
-FIN
+FIN---
+
