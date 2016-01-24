@@ -1,14 +1,13 @@
 ---
 title: "Reproducible Research Assignment 1"
 author: "Robert Ben Parkinson"
-date: "10 January 2016"
+date: "24 Febraury 2016"
 output: html_document
 ---
 1: Code for reading Activity Monitor Data
 
 ```{r}
-step <-   read.csv("activity.csv", sep =",")
-
+step <-   read.csv("data/activity.csv", sep =",")
 
 library(dplyr)
 
