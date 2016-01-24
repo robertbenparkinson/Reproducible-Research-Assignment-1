@@ -47,11 +47,37 @@ hist(df$s.Total, col = "green", main = "Number of Steps", xlab = "Steps")
 
 ```
 
-3: Mean and Median Number of Step 
-Limited to the top 50
+3: Mean and Median Number of Step per day
+
 
 ```{r}
-head(df[, 3:4], n=50)
+step2 <- step
+
+step2 <- na.omit(step2)
+
+ux <- unique(step2$date)
+
+xm <- data.frame(date=character(),
+                 mean=integer(),
+                 median=integer(),
+                 stringsAsFactors = FALSE)
+
+for(i in ux){
+  
+  xm0 <- subset(step2, date == i)
+  a <- mean(xm0$steps)
+  b <- median(xm0$steps)
+  xm[nrow(xm)+1,] <- c(i, a, b)
+  
+}
+
+c <- mean(step2$steps)
+d <- median(step2$steps)
+
+print(c("The total mean steps for the exericese is:", c))
+print(c("The total median steps for the exercise is:", d, "(lazy folks)"))
+
+xm
     
 
 ```
@@ -191,7 +217,34 @@ df <- na.omit(df)
 
 hist(df$s.Total, col = "green", main = "Number of Steps", xlab = "Steps")
 
-df[, 3:4]
+step2 <- step
+
+step2 <- na.omit(step2)
+
+ux <- unique(step2$date)
+
+xm <- data.frame(date=character(),
+                 mean=integer(),
+                 median=integer(),
+                 stringsAsFactors = FALSE)
+
+for(i in ux){
+  
+  xm0 <- subset(step2, date == i)
+  a <- mean(xm0$steps)
+  b <- median(xm0$steps)
+  xm[nrow(xm)+1,] <- c(i, a, b)
+  
+}
+
+c <- mean(step2$steps)
+d <- median(step2$steps)
+
+print(c("The total mean steps for the exericese is:", c))
+print(c("The total median steps for the exercise is:", d, "(lazy folks)"))
+
+xm
+    
 
 
 plot(df$s.Interval, df$s.Total  , type="l", col="green", 
