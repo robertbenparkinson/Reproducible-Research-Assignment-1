@@ -2,7 +2,9 @@
 title: "Reproducible Research Assignment 1"
 author: "Robert Ben Parkinson"
 date: "24-Feb-16"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 1: Code for reading Activity Monitor Data
 
